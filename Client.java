@@ -30,7 +30,14 @@ public class Client {
 			while (true) {
 
 				String message = "";
+				String temp = "";
 				System.out.println("Please enter a 1 for general message or 2 for direct message:");
+				temp = scan.nextLine();
+				if(temp.charAt(1) == '1' || temp.charAt(1) == '2') {
+					int type1 = Integer.parseInt(temp, 0);
+					System.out.println(type1);
+				}
+				//int type1 = Integer.parseInt(temp); 
 				//if (scan.hasNextInt()) {
 					int type = scan.nextInt();
 					scan.nextLine();
