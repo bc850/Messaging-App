@@ -51,7 +51,8 @@ public class Server {
 			 */
 
 		} catch (IOException ioe) {
-			System.err.println(ioe);
+			//System.err.println(ioe);
+			System.out.println(1);
 		}
 	}
 
@@ -109,7 +110,12 @@ public class Server {
 				}
 
 			} catch (IOException e) {
-				e.printStackTrace();
+				//clientSockets.remove(clientSocket);
+				//clientIDs.remove(clientID);
+				String disconnect = name + " has left the chat";
+				System.out.println(disconnect);
+				addMessages(disconnect);
+				//e.printStackTrace();
 			}
 		}
 	}
@@ -146,7 +152,9 @@ public class Server {
 					Thread.sleep(200);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
+					
+					System.out.println(2);
 				}
 			}
 			

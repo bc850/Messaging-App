@@ -6,10 +6,13 @@ import java.util.*;
 
 public class Client {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static Socket sock = null;
+	public static void main(String[] args) throws InterruptedException, IOException {
+		
 		try {
 			// make connection to server socket
 			Socket socket = new Socket("127.0.0.1", 6008);
+			sock = socket;
 
 			Scanner scan = new Scanner(System.in);
 			InputStream in = socket.getInputStream();
@@ -49,13 +52,16 @@ public class Client {
 					default:
 						break;
 					}
+					Thread.sleep(700);
 				}
 			}
 
 			// close the socket connection
 			// socket.close();
 		} catch (IOException ioe) {
+			sock.close();
 			System.err.println(ioe);
+			System.exit(0);
 		}
 	}
 
@@ -76,7 +82,9 @@ public class Client {
 					System.out.println(bin.readLine());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
+					System.out.println("Error, Closing");
+					System.exit(0);
 				}
 			}
 		}
