@@ -7,8 +7,9 @@ import java.util.*;
 public class Client {
 
 	public static Socket sock = null;
+
 	public static void main(String[] args) throws InterruptedException, IOException {
-		
+
 		try {
 			// make connection to server socket
 			Socket socket = new Socket("127.0.0.1", 6008);
@@ -16,14 +17,14 @@ public class Client {
 
 			Scanner scan = new Scanner(System.in);
 			InputStream in = socket.getInputStream();
-			//Server server = new Server();
+			// Server server = new Server();
 			BufferedReader bin = new BufferedReader(new InputStreamReader(in));
 			PrintWriter pout = new PrintWriter(socket.getOutputStream(), true);
 			ClientListener clientListener = new ClientListener(socket, bin);
 			new Thread(clientListener).start();
 
 			pout.println(scan.nextLine());
-			//scan.nextLine();
+			// scan.nextLine();
 
 			Thread.sleep(200);
 
@@ -31,16 +32,17 @@ public class Client {
 
 				String message = "";
 				String temp = "";
-				System.out.println("Please enter a 1 for general message or 2 for direct message:");
+				System.out.println("Please enter 1 for general message, 2 for direct message, or 3 to leave the lobby:");
 				temp = scan.nextLine();
-				if(temp.charAt(1) == '1' || temp.charAt(1) == '2') {
-					int type1 = Integer.parseInt(temp, 0);
-					System.out.println(type1);
-				}
-				//int type1 = Integer.parseInt(temp); 
-				//if (scan.hasNextInt()) {
-					int type = scan.nextInt();
-					scan.nextLine();
+				if (temp.equals("1") || temp.equals("2") || temp.equals("3")) {
+					//int type1 = Integer.parseInt(temp, 0);
+					//System.out.println(type1);
+
+					// int type1 = Integer.parseInt(temp);
+					// if (scan.hasNextInt()) {
+					//int type = scan.nextInt();
+					int type = Integer.parseInt(temp);
+					//scan.nextLine();
 
 					switch (type) {
 					case 1:
@@ -55,13 +57,17 @@ public class Client {
 						pout.println(scan.nextLine());
 						// directMessage(message);
 						break;
-						
+
+					case 3:
+						System.out.println("Leaving lobby...");
+						System.exit(0);
 					default:
 						break;
 					}
 					Thread.sleep(700);
 				}
-			//}
+			}
+			// }
 
 			// close the socket connection
 			// socket.close();
@@ -89,7 +95,7 @@ public class Client {
 					System.out.println(bin.readLine());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
-					//e.printStackTrace();
+					// e.printStackTrace();
 					System.out.println("Server Disconnected, Closing");
 					System.exit(0);
 				}
