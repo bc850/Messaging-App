@@ -45,6 +45,9 @@ public class Client {
 						pout.println(scan.nextLine());
 						// directMessage(message);
 						break;
+						
+					default:
+						break;
 					}
 				}
 			}
