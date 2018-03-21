@@ -31,7 +31,7 @@ public class Client {
 
 				String message = "";
 				System.out.println("Please enter a 1 for general message or 2 for direct message:");
-				if (scan.hasNextInt()) {
+				//if (scan.hasNextInt()) {
 					int type = scan.nextInt();
 					scan.nextLine();
 
@@ -54,7 +54,7 @@ public class Client {
 					}
 					Thread.sleep(700);
 				}
-			}
+			//}
 
 			// close the socket connection
 			// socket.close();
@@ -83,7 +83,7 @@ public class Client {
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					//e.printStackTrace();
-					System.out.println("Error, Closing");
+					System.out.println("Server Disconnected, Closing");
 					System.exit(0);
 				}
 			}
