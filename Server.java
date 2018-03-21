@@ -98,7 +98,7 @@ public class Server {
 				sendMessage("Please enter a name:");
 				pout.flush();
 				this.name = bin.readLine();
-				sendMessage("<" + name + "> has entered the Matrix...");
+				addMessages("<" + name + "> has entered the Matrix...");
 
 				pout.println("****Welcome to the Matrix****");
 				pout.flush();
